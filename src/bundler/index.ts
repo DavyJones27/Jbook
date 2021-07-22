@@ -4,7 +4,6 @@ import { fetchPlugin } from './plugin/fetch-plugin';
 
 let service: esbuild.Service;
 
-// eslint-disable-next-line import/no-anonymous-default-export
 const bundler = async (rawCode: string) => {
 
     if (!service) {
