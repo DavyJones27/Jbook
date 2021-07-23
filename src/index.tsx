@@ -5,7 +5,7 @@ import CodeCell from './components/code-cell';
 const App = () => {
     return <div>
         <CodeCell />
-    </div>
+        </div>
 }
 
 ReactDOM.render(

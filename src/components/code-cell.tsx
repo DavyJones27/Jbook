@@ -6,18 +6,20 @@ import Resizable from "./resizeable";
 
 const CodeCell = () => {
     const [input, setInput] = useState<string>("");
+    const [err, setErr] = useState<string>("");
     const [code, setCode] = useState<string>("");
 
     useEffect(() => {
         const timer = setTimeout(async () => {
             const output = await bundler(input);
-            setCode(output);
+            setCode(output.code);
+            setErr(output.err);
         }, 1000);
         return () => {
             clearTimeout(timer);
         }
     }, [input])
-    
+
     return <Resizable direction="vertical">
         <div style={{ height: '100%', display: "flex", flexDirection: "row" }}>
             <Resizable direction="horizontal">
@@ -28,7 +30,7 @@ const CodeCell = () => {
             </Resizable>
             <div>
             </div>
-            <Preview code={code} />
+            <Preview code={code} err={err} />
         </div>
     </Resizable>
 }
