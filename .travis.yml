@@ -1,0 +1,12 @@
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t davy/jbook -f Dockerfile.dev .
+
+script:
+  - docker run davy/jbook npm run test -- --coverage
+
+
